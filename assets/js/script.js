@@ -30,19 +30,12 @@ var taskFormHandler = function (event) {
         createTaskEl(taskDataObj);
     }
 
-    var taskDataObj = {
-        name: taskNameInput,
-        type: taskTypeInput
-    };
-
     if (!taskNameInput || !taskTypeInput) {
         alert("You need to fill out the task form!");
         return false;
     }
 
     formEl.reset();
-
-    createTaskEl(taskDataObj);
 };
 
 var createTaskEl = function (taskDataObj) {
@@ -102,6 +95,8 @@ var createTaskActions = function (taskId) {
 
         statusSelectEl.appendChild(statusOptionEl);
     }
+
+    return actionContainerEl;
 };
 
 var taskButtonHandler = function (event) {
@@ -213,9 +208,9 @@ var loadTasks = function () {
         return false;
     }
 
-    tasks = JSON.parse(tasks);
+    savedTasks = JSON.parse(savedTasks);
 
-    for (var i = 0; i < tasks.length; i++) {
+    for (var i = 0; i < savedTasks.length; i++) {
         createTaskEl(savedTasks[i]);
     }
 };
